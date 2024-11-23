@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>CRUD</title>
+
+  <link rel="icon" href="assets/user.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.7/dist/purify.min.js" integrity="sha256-ZAdXaZOlqhMD6vn++5Xlz8HAyAZFvTcX22cXJ+a1W5E=" crossorigin="anonymous"></script>
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <link href="form.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+        <header>
+          <h1> 
+            <svg xmlns="http://www.w3.org/2000/svg" stroke="#ff5733" fill="#ff5733" stroke-width="0" viewBox="0 0 512 512">
+              <use href="/assets/logo.svg#userIcon" /> 
+            </svg> 
+            <span>create, read, update, delete</span>
+            
+            <button id="add">Add a User</button>
+          </h1>  
+        </header>
+
+        <div popover id="formPopover">
+
+          <form id="itemForm" enctype="multipart/form-data">
+            <section>
+              <input type="hidden" name="_id">
+
+              <fieldset>
+                <label for="name">User Name</label>
+                <input
+                  required
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="e.g. Sofia"
+                  autocomplete="off"
+                />
+              </fieldset>
+    
+              <fieldset>
+                <label for="birthDate">Birth Date</label>
+                <input type="date" name="birthDate" id="birthDate" />
+              </fieldset>
+    
+              <fieldset>
+                <label for="primaryColor">Favourite Color</label>
+                <input
+                  type="color"
+                  name="primaryColor"
+                  id="primaryColor"
+                  value="#5f5854"
+                />
+              </fieldset>
+        
+              <fieldset>
+                <label for="ethnicity">Ethnicity</label>
+                <select name="ethnicity" id="ethnicity">
+                  <option value="" disabled selected>Select an Ethnicity</option>
+                  <option value="Caucasian">Caucasian</option>
+                  <option value="African">African</option>
+                  <option value="Asian">Asian</option>
+                  <option value="Hispanic">Hispanic</option>
+                  <option value="Indigenous">Indigenous</option>
+                  <option value="Other">Other</option>
+                </select>
+              </fieldset>
+    
+              <fieldset>
+                <label for="description">Description</label>
+                <small>Provide a brief biography.</small>
+                <textarea name="description" id="description" rows="6" cols="30"></textarea>
+              </fieldset>
+    
+              <fieldset>
+                <label for="personality">Personality</label>
+                <small>Introvert or extravert?</small>
+                <input type="range" min="0" max="10" name="personality" id="personality" />
+              </fieldset>
+    
+              <fieldset>
+                <legend>Civil status</legend> 
+                <label for="single">
+                  <input type="radio" id="single" name="status" value="single" />
+                  <span>Single</span>
+                </label>
+                <label for="married">
+                  <input type="radio" id="married" name="status" value="married" />
+                  <span>Married</span>
+                </label>
+                <label for="divorced">
+                  <input type="radio" id="divorced" name="status" value="divorced" />
+                  <span>Divorced</span>
+                </label>
+                <label for="widowed">
+                  <input type="radio" id="widowed" name="status" value="widowed" />
+                  <span>Widowed</span>                
+                </label>
+                <label for="partnership">
+                  <input type="radio" id="partnership" name="status" value="partnership" />
+                  <span>Partnership</span>                
+                </label>
+              </fieldset>
+    
+              <fieldset>
+                <label for="idNum">ID Number</label>
+                <small>Provide a valid identification number.</small>
+                <input
+                  required 
+                  type="number"
+                  name="idNumber"
+                  step="1"
+                  max="999999999"
+                  id="idNumber"
+                  placeholder="e.g. 123456789" 
+                />
+              </fieldset>
+
+              <fieldset>
+                <label for="imageUrl" class="profile-picture-label">Profile Picture</label>
+                <input type="file" name="imageUrl" id="imageUrl" accept="image/*" style="display: none;" />
+                <div id="imagePreviewContainer" style="display:none;">
+                    <img id="imagePreview" src="" alt="Image Preview" style="max-width: 200px; max-height: 200px;" />
+                </div>
+            </fieldset>                       
+
+            </section>
+            
+            <section id="noticeArea"></section>
+          
+            <fieldset> 
+              <button class="save" popovertarget="formPopover">Save</button>
+              <button type="button" class="cancel">Cancel</button> 
+            </fieldset> 
+
+          </form>
+ 
+      </div>
+
+        <main id="content">       
+        </main>
+         
+      <footer>
+        <p>This demo illustrates a full stack <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Glossary/CRUD">CRUD</a> (Create Read Update Delete) interface: Frontend (User Interface) and Backend (NodeJS API). The idea was realized with the help of the professors materials.
+        <br>The backend leverages <a target="_blank" href="https://www.geeksforgeeks.org/multer-npm/">Multer</a> for file uploads.</p>
+      </footer> 
+   
+  <script type="module" src="script.js"></script>
+  
+  </body>
+  
+</html>

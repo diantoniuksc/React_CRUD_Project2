@@ -1,0 +1,436 @@
+html, body {
+  height: 100%;
+  width: 100%;  
+  margin: 0;
+  min-height: 100vh;
+  background: rgb(179, 164, 173);
+}
+
+body {
+  background-color: rgb(179, 164, 173);
+  font-family: 'Jost', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+
+html, body,  button, input, textarea{
+  font-family: "Jost",sans-serif; 
+  font-size: 1rem;
+  font-weight: 300;  
+  font-style: normal;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1, h2, h3 { 
+  font-weight: 700;   
+  text-align: center;
+} 
+
+body > header{
+ margin: 0 auto; 
+ text-align: center;
+  color: #fff;
+}
+
+.profile-picture-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+}
+
+.profile-picture-label:hover {
+  background-color: #45a049;
+}
+
+.profile-picture-label:active {
+  background-color: #3e8e41;
+}
+
+#imageUrl {
+  display: none;
+}
+
+header h1 {
+  font-size: 2rem; 
+  text-align: center;
+  display: flex;
+  gap:2rem;
+  align-items: center;
+}
+
+header h1 span{
+  line-height: 2rem;
+  max-width: 50vw;
+}
+
+header h1 svg{   
+  width: 4rem;
+}
+
+
+button{
+ border: 0; 
+  font-weight: 700;  
+  background-color: #000;  
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+} 
+ 
+
+
+
+#content{  
+  gap: 3rem; 
+  margin: 1rem; 
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+
+#content.loading{
+  background-image: url('assets/load.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+
+/* CSS for item Cards */
+.item{
+  border-radius: 1rem; 
+  background: #eee;
+  display:grid;
+  overflow: hidden;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+.item section{
+  display:flex;
+  flex-direction: column;
+}
+.item .image {
+  position: relative;
+}
+.item .image button{
+  background: none;
+  position: absolute;
+  padding: 0;
+}
+.item .image button img{
+  width: 2rem;
+  margin: 1rem;
+  opacity: 0.5;
+}
+.item .image button:hover img{
+  opacity: 1;
+}
+
+.item .information{
+  padding: 1rem;
+}
+
+.frame {
+  width: 100%;                /* Make the frame square to fill the entire card */
+  aspect-ratio: 1 / 1;        /* See also: https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio   */
+  overflow: hidden;           /* Prevent anything from spilling over beyond the square. */
+}
+
+.frame img {
+  object-fit: cover;          /* See also https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit */
+  width: 100%;                /* set the image to 100% of the square container for both width and hight */
+  height: 100%;
+}
+
+/* change the layout of items depending on the screen size */
+@media (min-width: 750px) {
+  #content{ 
+    margin: 2rem;  
+    
+    max-width: 1200px; 
+  } 
+  .frame {
+    width: 100%;                /* Make the square fill the entire card */
+    aspect-ratio: auto;
+    height: 100%;      
+    overflow: hidden;           /* Prevent anything from spilling over beyond the square. */
+  }
+  
+  .item { 
+    grid-template-columns: 1fr 1fr;
+    width: auto;
+  }  
+/* 
+  .item { 
+    grid-template-columns: 1fr 2fr;
+    width: auto;
+  }   */
+}
+
+/* change the layout of items depending on the screen size */
+@media (min-width: 1200px) {
+  #content{
+    /* grid-template-columns: 1fr 1fr; */
+    margin: 3rem; 
+    
+  } 
+
+  /*if the screen is sufficiently large,
+   we can force the image and the info to  both be  square */
+  .frame{
+    aspect-ratio: 1 / 1;   
+    height: auto;
+  }
+
+  .information{
+    aspect-ratio: 1 / 1;   
+    height: auto;
+    color: #000;
+  }
+
+  /* .item { 
+    grid-template-columns: 1fr 1fr;
+    width: auto;
+  }   */
+}
+
+/* Set accent colour for meter. */ 
+
+/* Style the background bar of the meter */
+meter::-webkit-meter-bar {
+  background: #fff; /* background color of the meter */
+}
+
+/* Style for the 'optimum' range (e.g., the highest value range) */
+meter::-webkit-meter-optimum-value {
+  background: #000;
+}
+
+/* Style for the 'sub-optimum' range (e.g., medium value range) */
+meter::-webkit-meter-suboptimum-value {
+  background: #000;
+}
+
+/* Style for the 'even-less-good' range (e.g., low value range) */
+meter::-webkit-meter-even-less-good-value {
+  background: #000;
+}
+
+
+.item header{ 
+  background: transparent; 
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.item main{ 
+  background: transparent;
+  text-align: center;
+  
+  overflow-y: auto;
+  flex-shrink: 1;
+    flex-basis: 30%;
+    flex-grow: 1;
+  border-radius: 1rem;
+} 
+
+.item header h2{
+  font-size: 3rem;
+  line-height: 3rem;
+  margin-bottom: 0;
+  padding-bottom: 0.25rem; /* allows descenders to appear despite line height.*/
+}
+.item svg{
+  height: 1em;
+  width: 1em;
+  margin-bottom: -0.5rem
+}
+.item h3{
+  margin-top: 0;
+  font-size: 1rem;
+  color: #666;
+}
+.item .stats{
+  width: 100%;
+  display: flex;
+  flex-direction: column; 
+  text-align: center;
+  justify-content: center;   
+}
+.stats .stat{ 
+  display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 0 3rem 0 1rem;
+
+} 
+.stat span{
+  width: 10rem;
+  text-align: right;
+}
+.stats meter{
+  flex-grow: 1;
+  height: 2rem;
+}
+
+/* styling for the calendar */
+.calendar{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 4rem;
+  text-align: center;
+  margin: 1rem 0 1rem 1rem; 
+  background: #3b3b3b66; 
+  
+  color: #fff;
+  
+  border-radius: 1rem ;
+}
+.calendar .born{
+  margin: 0;  
+  padding-top: 0.5rem;
+  border-radius: 1rem 1rem 0 0;
+}
+.calendar .born img{
+  width: 1.5rem;
+}
+.birthYear{ 
+  border-top: 1px solid white;
+  font-weight: 700;   
+  padding-bottom: 0.5rem;
+  border-radius: 0 0 1rem 1rem ;
+}
+.birthMonth{ 
+  border-top: 1px solid white;
+  text-transform: uppercase;
+  background: #3b3b3b66;  
+  font-weight: 700;
+}
+.birthDay{ 
+  border-top: 1px solid white;
+  background: #3b3b3bbb;  
+  font-size: 2rem;
+  font-weight: 700;
+} 
+.badges{
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.badge{  
+  background-image: url(assets/heart.svg);
+  background-repeat: no-repeat;
+  background-position: 1rem center;
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: 1rem; 
+  color: white;
+}
+.success{
+  background-color: #999;
+}
+.alert{
+  background-color: darkorange; 
+}
+
+.item .options{
+  /* center the edit and delete buttons */
+  text-align: center;
+  margin: auto 0 0 0;
+  padding: 2rem 0 1rem 0;
+} 
+
+.item .food{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.item .food img{
+  width: 4rem;
+}
+.item .food span{
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.item .adoption{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+/*.item .adoption img{
+  width: 3rem;
+}*/
+
+[popover] {
+  padding: 2rem 2rem 3rem;
+  border-radius: 1rem;
+  border: none;
+  filter: drop-shadow(0 0 2rem rgba(0, 0, 0, 0.3)); 
+}
+
+[popover]::backdrop {
+  backdrop-filter: blur(3px);
+}
+
+
+
+[popover] .imagePopover{
+  position: relative;
+}
+
+[popover] .imagePopover img{
+  max-height: 80vh;
+}
+ 
+
+[popover] .imagePopover button{
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+ 
+
+/* Footer */
+
+footer {
+  background: #263d4a;
+  text-align: center;
+  padding: 3rem;  
+  color: #fff;
+  align-self: stretch;
+}
+footer a{ 
+  color: #fff;
+}
+
