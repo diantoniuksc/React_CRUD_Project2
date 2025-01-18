@@ -1,14 +1,5 @@
 // This  module defines a database connection to MongoDB
   
-
-/* Connect to MongoDB:
-To connect, you must add a MongoDB connection string
-as an environment variable (i.e. Replit "Secret")
-The name/key of the environment variable must be "MONGODB"
-The value of the variable must be a valid MongoDB connection string. 
-You can locate the string in your MongoDB Atlas dashboard.
-See also: https://account.mongodb.com/account/login  
-See also: https://mongoosejs.com/docs/connections.html */ 
  
 import dotenv from 'dotenv';
 import mongoose from 'mongoose'
