@@ -6,3 +6,7 @@ To use this demo, you must have a MongoDB Atlas instance. You must create an env
 ```MONGODB=mongodb+srv://<userName>:<password>@cluster0.kto5g.mongodb.net/mycats?retryWrites=true&w=majority```
 Change <password> for your password
 Change <userName> for your username
+
+# Executing
+To test locally run the following command:
+```node index.js```
